@@ -1,3 +1,5 @@
+# vim: softtabstop=2 shiftwidth=2 :
+#
 # To create this file:
 # New-Item $profile -Type File -Force
 
@@ -14,6 +16,8 @@ Function Test-Elevated {
 #   echo "Eh, do whatever."
 # }
 
+Set-PSReadLineOption -EditMode Emacs
+
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
@@ -21,10 +25,11 @@ New-Alias c clear
 New-Alias i ipython
 New-Alias which get-command
 function x{exit}
-New-Alias ssh-agent Start-Ssh-Agent
 
-Set-PSReadLineOption -EditMode Emacs
+function Github {
+  Import-Module "H:\lib\posh-git\src\posh-git.psd1"
+  Start-Ssh-Agent -Quiet
+}
 
-Import-Module "H:\lib\posh-git\src\posh-git.psd1"
 # Set-Alias ssh-agent "$env:LOCALAPPDATA\Programs\Git\usr\bin\ssh-agent.exe"
 # Set-Alias ssh-add "$env:LOCALAPPDATA\Programs\Git\usr\bin\ssh-add.exe"
