@@ -14,16 +14,17 @@ Function Test-Elevated {
 #   echo "Eh, do whatever."
 # }
 
-# doskey /exename=powershell.exe /MACROFILE=H:/bin/bashrc.ps1
-# doskey /exename=powershell.exe c=clear
-# doskey /exename=powershell.exe x=exit
-# doskey /exename=powershell.exe i=ipython
-
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 New-Alias c clear
 New-Alias i ipython
+New-Alias which get-command
 function x{exit}
+New-Alias ssh-agent Start-Ssh-Agent
 
 Set-PSReadLineOption -EditMode Emacs
+
+Import-Module "H:\lib\posh-git\src\posh-git.psd1"
+# Set-Alias ssh-agent "$env:LOCALAPPDATA\Programs\Git\usr\bin\ssh-agent.exe"
+# Set-Alias ssh-add "$env:LOCALAPPDATA\Programs\Git\usr\bin\ssh-add.exe"
