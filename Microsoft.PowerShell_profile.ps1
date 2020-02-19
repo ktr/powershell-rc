@@ -26,6 +26,7 @@ New-Alias i ipython
 New-Alias which get-command
 function .. {cd ..}
 function x  {exit}
+function title ($title) { $host.ui.RawUI.WindowTitle = $title }
 
 function Github {
   Import-Module "H:\lib\posh-git\src\posh-git.psd1"
