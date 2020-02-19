@@ -24,7 +24,8 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 New-Alias c clear
 New-Alias i ipython
 New-Alias which get-command
-function x{exit}
+function .. {cd ..}
+function x  {exit}
 
 function Github {
   Import-Module "H:\lib\posh-git\src\posh-git.psd1"
