@@ -28,6 +28,10 @@ function .. {cd ..}
 function x  {exit}
 function title ($title) { $host.ui.RawUI.WindowTitle = $title }
 
+Function activate ($env) {
+  & H:\.envs\$env\Scripts\Activate.ps1
+}
+
 function Github {
   Import-Module "H:\lib\posh-git\src\posh-git.psd1"
   Start-Ssh-Agent -Quiet
