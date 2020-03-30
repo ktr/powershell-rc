@@ -10,6 +10,21 @@ Function Test-Elevated {
   $prp.IsInRole($adm)
 }
 
+Function Set-DefaultBrowser ($browserU) {
+  If ($browserU -eq "chrome") {
+    $browser = "google%chrome"
+  } ElseIf ($browserU -eq "edge") {
+    $browser = "msedge.exe"
+  } Else {
+    $browser = $browserU
+  }
+  $cmd = '/name Microsoft.DefaultPrograms /page pageDefaultProgram\pageAdvancedSettings?pszAppName=' + $browser
+  Add-Type -AssemblyName 'System.Windows.Forms'
+  Start-Process $env:windir\system32\control.exe -ArgumentList $cmd
+  Sleep 3
+  [System.Windows.Forms.SendKeys]::SendWait("{TAB}{TAB}{TAB}{TAB}{TAB}{ENTER} ")
+}
+
 # If (Test-Elevated) {
 #   echo "Be careful!"
 # } Else {
@@ -29,7 +44,17 @@ function x  {exit}
 function title ($title) { $host.ui.RawUI.WindowTitle = $title }
 
 Function activate ($env) {
-  & H:\.envs\$env\Scripts\Activate.ps1
+  $p1 = "H:\.envs\$env\Scripts\Activate.ps1"
+  $p2 = "C:\Users\kryan\.envs\$env\Scripts\Activate.ps1"
+  If (Test-Path $p1) {
+    echo "Activating $p1"
+    & $p1
+  } ElseIf (Test-Path $p2) {
+    echo "Activating $p2"
+    & $p2
+  } Else {
+    echo "Cannot find environment $env"
+  }
 }
 
 function Github {
