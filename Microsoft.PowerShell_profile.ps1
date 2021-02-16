@@ -64,3 +64,11 @@ function Github {
 
 # Set-Alias ssh-agent "$env:LOCALAPPDATA\Programs\Git\usr\bin\ssh-agent.exe"
 # Set-Alias ssh-add "$env:LOCALAPPDATA\Programs\Git\usr\bin\ssh-add.exe"
+
+function c {
+  cls
+}
+
+function x {
+  exit
+}
