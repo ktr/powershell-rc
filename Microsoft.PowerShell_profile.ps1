@@ -39,6 +39,10 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 New-Alias c clear
 New-Alias i ipython
 New-Alias which get-command
+
+Set-Alias -Name vi -Value nvim.exe
+Set-Alias -Name vim -Value nvim-qt.exe
+
 function .. {cd ..}
 function x  {exit}
 function title ($title) { $host.ui.RawUI.WindowTitle = $title }
